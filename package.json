@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "w": "npx webpack",
-    "ws": "npx webpack-dev-server"
+    "ws": "npx webpack-dev-server",
+    "wo": "WEBPACK_ENV=online npx webpack -P",
+    "wo_win": "set WEBPACK_ENV=online&& npx webpack -P"
+
   },
   "author": "",
   "license": "ISC",

@@ -3,14 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+
+let WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 const extractCSS = new ExtractTextPlugin({
     filename: 'stylesheets/[name].css',
-    disable: process.env.NODE_ENV === "development",
+    disable: process.env.WEBPACK_ENV === "dev",
     ignoreOrder: true
 });
 const extractLess = new ExtractTextPlugin({
     filename: "stylesheets/[name].css",
-    disable: process.env.NODE_ENV === "development",
+    disable: process.env.WEBPACK_ENV === "dev",
     ignoreOrder: true
 });
 module.exports = {
@@ -104,6 +106,9 @@ module.exports = {
             filename: 'view/index.html',
             template: 'view/react_demo.html'
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        ()=>{
+            console.log(WEBPACK_ENV);
+            if(WEBPACK_ENV === 'dev') new webpack.HotModuleReplacementPlugin()
+        }
     ]
 }
