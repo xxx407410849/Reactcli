@@ -5,11 +5,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 let WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
+<<<<<<< HEAD
 const extractCSS = new ExtractTextPlugin({
     filename: 'stylesheets/[name].css',
     disable: process.env.WEBPACK_ENV === "dev",
     ignoreOrder: true
 });
+=======
+>>>>>>> react_cli_version1.0.3
 const extractLess = new ExtractTextPlugin({
     filename: "stylesheets/[name].css",
     disable: process.env.WEBPACK_ENV === "dev",
@@ -63,10 +66,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: extractCSS.extract({use :['css-loader'],fallback: 'style-loader'})
-            },
-            {
                 test: /\.(png|jpg|gif)$/,
                 use: [
                   {
@@ -79,8 +78,16 @@ module.exports = {
                 ]
             },
             {
-                test: /\.less$/,
-                use: extractLess.extract(['css-loader','less-loader'],'style-loader')
+                test: /\.(less|css)$/,
+                use: extractLess.extract({
+                    fallback : 'style-loader',
+                    use: [
+                        {loader : 'css-loader' , options : { importLoaders: 2 , autoprefixer : false}},
+                        {loader: 'postcss-loader'},
+                        {loader : 'less-loader' , options : { relativeUrls : true}}
+                    ]
+
+                })
             }, {
                 test: /\.ejs$/,
                 loader: 'ejs-loader'
@@ -100,14 +107,20 @@ module.exports = {
     },
     plugins: [
         extractLess,
-        extractCSS,
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             filename: 'view/index.html',
             template: 'view/react_demo.html'
         }),
         ()=>{
+<<<<<<< HEAD
             console.log(WEBPACK_ENV);
+=======
+<<<<<<< HEAD
+=======
+            console.log(WEBPACK_ENV);
+>>>>>>> 6da014787fbfc2c2e64e84cad87869ddf08b6ce3
+>>>>>>> react_cli_version1.0.3
             if(WEBPACK_ENV === 'dev') new webpack.HotModuleReplacementPlugin()
         }
     ]

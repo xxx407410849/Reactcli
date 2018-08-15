@@ -9,7 +9,14 @@
     "ws": "npx webpack-dev-server",
     "wo": "WEBPACK_ENV=online npx webpack -P",
     "wo_win": "set WEBPACK_ENV=online&& npx webpack -P"
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6da014787fbfc2c2e64e84cad87869ddf08b6ce3
+>>>>>>> react_cli_version1.0.3
   },
   "author": "",
   "license": "ISC",
