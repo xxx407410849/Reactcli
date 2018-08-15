@@ -5,4 +5,4 @@
 - optimization配置
 - React开发环境配置
 # 用法
-扒下来 npm install 咯
+扒下来 ```npm install``` 咯
