@@ -5,14 +5,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 let WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
-<<<<<<< HEAD
 const extractCSS = new ExtractTextPlugin({
     filename: 'stylesheets/[name].css',
     disable: process.env.WEBPACK_ENV === "dev",
     ignoreOrder: true
 });
-=======
->>>>>>> react_cli_version1.0.3
 const extractLess = new ExtractTextPlugin({
     filename: "stylesheets/[name].css",
     disable: process.env.WEBPACK_ENV === "dev",
@@ -113,14 +110,7 @@ module.exports = {
             template: 'view/react_demo.html'
         }),
         ()=>{
-<<<<<<< HEAD
             console.log(WEBPACK_ENV);
-=======
-<<<<<<< HEAD
-=======
-            console.log(WEBPACK_ENV);
->>>>>>> 6da014787fbfc2c2e64e84cad87869ddf08b6ce3
->>>>>>> react_cli_version1.0.3
             if(WEBPACK_ENV === 'dev') new webpack.HotModuleReplacementPlugin()
         }
     ]
